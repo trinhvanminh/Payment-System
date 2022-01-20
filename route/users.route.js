@@ -11,6 +11,8 @@ router.get("/logout", usersController.logout);
 // Nạp tiền
 router.get("/recharge", verifyToken, usersController.rechargeView);
 router.post("/recharge", verifyToken, usersController.recharge);
+// Balance
+router.get("/balance", verifyToken, usersController.balanceView);
 
 
 module.exports = router;

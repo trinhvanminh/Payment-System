@@ -136,14 +136,19 @@ class usersController {
   //[POST] /auth/recharge
   recharge(req, res) {
     const { id, sotiennap } = req.body;
-    db.query(
-      'update public."User" set "sodu" = "sodu" + $1 where "id" = $2',
-      [sotiennap, id]
-    );
+    db.query('update public."User" set "sodu" = "sodu" + $1 where "id" = $2', [
+      sotiennap,
+      id,
+    ]);
     res.render("./auth/recharge", {
       message: "nap tien thanh cong",
       type: "success",
     });
+  }
+
+  // [GET] /auth/balance
+  balanceView(req, res) {
+    res.render("./auth/balance", { authenticated: req.authenticated });
   }
 }
 
