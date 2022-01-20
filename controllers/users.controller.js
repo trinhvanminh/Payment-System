@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const { createTokens } = require("../jwt");
 const db = require("../db");
-let store = require("store");
 
 class usersController {
   //[GET] /auth/login
@@ -139,7 +138,8 @@ class usersController {
 
   //[POST] /auth/recharge
   recharge(req, res) {
-    const { id, sotiennap } = req.body;
+    const { sotiennap } = req.body;
+    const id = req.cookies["id-login"];
     db.query('update public."User" set "sodu" = "sodu" + $1 where "id" = $2', [
       sotiennap,
       id,
