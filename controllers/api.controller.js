@@ -10,7 +10,7 @@ class apiController {
     const sql = `select * from public."User" where "id" = ${id}`;
     db.query(sql)
       .then((data) => {
-        res.json(data);
+        res.json({ data, message: "Liên Kết Thành Công" });
       })
       .catch((err) => console.log(err));
   }
@@ -38,7 +38,8 @@ class apiController {
             const sql = `update public."User" set "sodu" = ${newBalance} where "id" = ${id}`;
             db.query(sql)
               .then((data) => {
-                res.json({ data: data, message: "Thanh toán thành công" });
+                res.json({ message: "Thanh toán thành công" });
+                return;
               })
               .catch((err) => console.log(err));
           }
