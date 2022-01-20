@@ -7,7 +7,16 @@ const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
+const axios = require("axios");
+const https = require("https");
 
+const Agent = new https.Agent({
+  rejectUnauthorized: false,
+});
+
+const instance = axios.create();
+
+instance.defaults.httpsAgent = Agent;
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
@@ -38,7 +47,6 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 app.set("views", "./views");
-
 
 // Routes
 route(app);
