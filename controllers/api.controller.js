@@ -15,6 +15,7 @@ class apiController {
       .catch((err) => console.log(err));
   }
 
+
   // [PUT] /api/payment - payment
   paymentWallet(req, res) {}
 }
