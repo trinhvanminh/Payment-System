@@ -131,6 +131,8 @@ class usersController {
   //[POST] /auth/register
   register(req, res) {
     const { id, password1, password2 } = req.body;
+    const sodu = 0;
+    const role = "manager";
     if (password1 !== password2) {
       res.render("./auth/register", {
         message: "mat khau khong trung khop",
@@ -141,8 +143,8 @@ class usersController {
         .hash(password1, 10)
         .then((hash) => {
           db.query(
-            'insert into public."User"("id", "password","sodu","role") values ($1, $2,0,manager)',
-            [id, hash]
+            'insert into public."User"("id", "password","sodu","role") values ($1, $2, $3, $4)',
+            [id, hash, sodu, role]
           );
           res.render("./auth/register", {
             message: "dang ky thanh cong",
