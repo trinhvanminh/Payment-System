@@ -127,6 +127,14 @@ class usersController {
     }
     res.redirect("/");
   }
+
+  // [GET] /auth/recharge
+  rechargeView(req, res) {
+    res.render("./auth/recharge", { authenticated: req.authenticated });
+  }
+
+  //[POST] /auth/recharge
+  recharge(req, res) {}
 }
 
 module.exports = new usersController();

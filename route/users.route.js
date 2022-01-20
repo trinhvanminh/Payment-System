@@ -8,5 +8,9 @@ router.post("/login", usersController.login);
 router.get("/changepassword", verifyToken, usersController.changepasswordView);
 router.post("/changepassword", verifyToken, usersController.changepassword);
 router.get("/logout", usersController.logout);
+// Nạp tiền
+router.get("/recharge", verifyToken, usersController.rechargeView);
+router.post("/recharge", verifyToken, usersController.recharge);
+
 
 module.exports = router;
