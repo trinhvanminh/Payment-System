@@ -51,6 +51,18 @@ class apiController {
       })
       .catch((err) => console.log(err));
   }
+
+  // [GET] /api/history - history
+  historyPayment(req, res) {
+    // get data with ID
+    const { id } = req.body;
+    const sql = `select * from public."History" where "id_user" = ${id}`;
+    db.query(sql)
+      .then((data) => {
+        res.json({ data, message: "Lấy Lịch Sử Thanh Toán Thành Công" });
+      })
+      .catch((err) => console.log(err));
+  }
 }
 
 module.exports = new apiController();
