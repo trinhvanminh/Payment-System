@@ -123,6 +123,36 @@ class usersController {
     });
   }
 
+  // [GET] /auth/register
+  registerView(req, res) {
+    res.render("./auth/register", { authenticated: req.authenticated });
+  }
+
+  //[POST] /auth/register
+  register(req, res) {
+    const { id, password1, password2 } = req.body;
+    if (password1 !== password2) {
+      res.render("./auth/register", {
+        message: "mat khau khong trung khop",
+        type: "warning",
+      });
+    } else {
+      bcrypt
+        .hash(password1, 10)
+        .then((hash) => {
+          db.query(
+            'insert into public."User"("id", "password","sodu","role") values ($1, $2,0,manager)',
+            [id, hash]
+          );
+          res.render("./auth/register", {
+            message: "dang ky thanh cong",
+            type: "success",
+          });
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+
   // [GET] /auth/logout
   logout(req, res, next) {
     if (req.cookies["access-token"]) {
