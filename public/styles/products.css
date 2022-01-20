@@ -1,0 +1,42 @@
+.list-product-header {
+  display: flex;
+}
+
+.list-product-header h1 {
+  margin: 20px auto;
+}
+
+.list-product-features {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-product {
+  margin: 0;
+}
+
+.list-product-button {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 20px;
+}
+
+.list-product-action {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 20px;
+}
+
+.list-product-list {
+  margin: 20px 0 50px 0;
+}
+
+/* Add product */
+.add-covider-submit-1 {
+  display: flex;
+  width: 187px;
+  height: 35px;
+  margin: 40px auto;
+}
+
+

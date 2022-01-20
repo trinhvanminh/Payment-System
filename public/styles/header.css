@@ -1,0 +1,51 @@
+.container-nav {
+  padding: 0;
+}
+
+.header-button {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  border: #000;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+.navbar-brand-btn {
+  border: 1px solid #000;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.nav-bar-background {
+  background-color: rgb(232, 249, 252);
+  border-radius: 3px;
+}
+
+.header-user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(121, 121, 121);
+}
+
+/* Footer */
+.footer-all {
+  background-color: rgb(70, 66, 66);
+  color: #fff;
+}
+
+.font-footer {
+  color: #fff;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}

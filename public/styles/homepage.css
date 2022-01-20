@@ -1,0 +1,28 @@
+/* Home Show */
+.full-screen {
+  padding: 0;
+}
+
+.header-show {
+  height: 400px;
+}
+
+.team-avatar {
+  width: 100%;
+  height: 300px;
+}
+
+.main-feautures {
+  margin: auto;
+}
+
+.main-feature-item {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.main-feature-item i,
+.main-feature-item p {
+  margin: auto;
+}

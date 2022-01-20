@@ -1,0 +1,12 @@
+.package-list-btn {
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.add-package-submit-1 {
+  display: flex;
+  width: 215px;
+  height: 35px;
+  margin: 40px auto;
+}

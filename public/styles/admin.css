@@ -1,0 +1,33 @@
+.admin-account-card {
+  margin-top: 20px;
+}
+
+.admin-account-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-account-manager-detail {
+  width: 100px;
+  height: 35px;
+}
+
+.button-account-manager-detail-1 {
+  width: 150px;
+  height: 35px;
+}
+
+.button-edit-location {
+    display: flex;
+    width: 55px;
+    height: 35px;
+    margin: 40px auto;
+}
+
+.button-add-location{
+    display: flex;
+    width: 70px;
+    height: 35px;
+    margin: 40px auto;
+}

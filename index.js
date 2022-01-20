@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
-const route = require("./routes/index.route");
+const route = require("./route/index.route");
 const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -39,11 +39,6 @@ app.engine(
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-  })
-);
 
 // Routes
 route(app);
