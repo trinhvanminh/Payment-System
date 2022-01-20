@@ -6,10 +6,12 @@ const createTokens = ({ username }) => {
   return accessToken;
 };
 
+
 const verifyToken = (req, res, next) => {
   const accessToken = req.cookies["access-token"];
   if (!accessToken) {
     req.authenticated = false;
+    req.id = "";
     return next();
   }
 

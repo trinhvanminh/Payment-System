@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const { createTokens } = require("../jwt");
 const db = require("../db");
+let store = require("store");
 
 class usersController {
   //[GET] /auth/login
@@ -15,7 +16,7 @@ class usersController {
   login(req, res, rext) {
     require("../db")
       .query('select "password" from public."User" where "id" = $1', [
-        req.body.username,
+        req.body.id,
       ])
       .then((data) => {
         console.log(data);
@@ -31,6 +32,8 @@ class usersController {
           const accessToken = createTokens({
             id: req.body.id,
           });
+
+          res.cookie("id-login", req.body.id);
           res.cookie("access-token", accessToken);
           res.redirect("/");
         } else {
@@ -43,6 +46,7 @@ class usersController {
                 const accessToken = createTokens({
                   id: req.body.id,
                 });
+                res.cookie("id-login", req.body.id);
                 res.cookie("access-token", accessToken);
                 res.redirect("/");
               } else {
@@ -148,7 +152,15 @@ class usersController {
 
   // [GET] /auth/balance
   balanceView(req, res) {
-    res.render("./auth/balance", { authenticated: req.authenticated });
+    const id = req.cookies["id-login"];
+    db.query('select "sodu" from public."User" where "id" = $1', [id]).then(
+      (data) => {
+        res.render("./auth/balance", {
+          authenticated: req.authenticated,
+          sodu: data.rows[0].sodu,
+        });
+      }
+    );
   }
 }
 
