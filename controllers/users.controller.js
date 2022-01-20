@@ -69,58 +69,63 @@ class usersController {
 
   //[POST] /auth/changepassword
   changepassword(req, res) {
-    const { id, password, newpassword } = req.body;
-    db.query('select "password" from public."User" where "id" = $1', [
-      req.body.id,
-    ]).then((data) => {
-      if (data.rowCount == 0) {
-        res.render("./auth/changePassword", {
-          message: "tai khoan hoac mk khong chinh xac",
-          type: "warning",
-        });
-      } else if (data.rowCount == 1 && data.rows[0].password === "") {
-        bcrypt
-          .hash(newpassword, 10)
-          .then((hash) => {
-            db.query(
-              'update public."User" set "password" = $1 where "id" = $2',
-              [hash, id]
-            );
-            res.render("./auth/changePassword", {
-              message: "doi mat khau thanh cong",
-              type: "success",
-            });
-          })
-          .catch((err) => console.log(err));
-      } else {
-        // Load hash from your password DB.
-        bcrypt
-          .compare(password, data.rows[0].password)
-          .then((match) => {
-            if (match) {
-              bcrypt
-                .hash(newpassword, 10)
-                .then((hash) => {
-                  db.query(
-                    'update public."User" set "password" = $1 where "id" = $2',
-                    [hash, id]
-                  );
-                  res.render("./auth/changePassword", {
-                    message: "doi mat khau thanh cong",
-                    type: "success",
-                  });
-                })
-                .catch((err) => console.log(err));
-            } else {
+    const id = req.cookies["id-login"];
+    const { password, newpassword } = req.body;
+    db.query('select "password" from public."User" where "id" = $1', [id]).then(
+      (data) => {
+        if (data.rowCount == 0) {
+          res.render("./auth/changePassword", {
+            authenticated: req.authenticated,
+            message: "tai khoan hoac mk khong chinh xac",
+            type: "warning",
+          });
+        } else if (data.rowCount == 1 && data.rows[0].password === "") {
+          bcrypt
+            .hash(newpassword, 10)
+            .then((hash) => {
+              db.query(
+                'update public."User" set "password" = $1 where "id" = $2',
+                [hash, id]
+              );
               res.render("./auth/changePassword", {
-                message: "sai mat khau cu",
-                type: "warning",
+                authenticated: req.authenticated,
+                message: "doi mat khau thanh cong",
+                type: "success",
               });
-            }
-          })
-          .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
+        } else {
+          // Load hash from your password DB.
+          bcrypt
+            .compare(password, data.rows[0].password)
+            .then((match) => {
+              if (match) {
+                bcrypt
+                  .hash(newpassword, 10)
+                  .then((hash) => {
+                    db.query(
+                      'update public."User" set "password" = $1 where "id" = $2',
+                      [hash, id]
+                    );
+                    res.render("./auth/changePassword", {
+                      authenticated: req.authenticated,
+                      message: "doi mat khau thanh cong",
+                      type: "success",
+                    });
+                  })
+                  .catch((err) => console.log(err));
+              } else {
+                res.render("./auth/changePassword", {
+                  authenticated: req.authenticated,
+                  message: "sai mat khau cu",
+                  type: "warning",
+                });
+              }
+            })
+            .catch((err) => console.log(err));
+        }
       }
-    });
+    );
   }
 
   // [GET] /auth/register
