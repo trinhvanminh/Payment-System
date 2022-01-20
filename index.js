@@ -7,7 +7,6 @@ const morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
-const fileUpload = require("express-fileupload");
 
 
 // override with POST having ?_method=DELETE
