@@ -15,6 +15,9 @@ router.get("/recharge", verifyToken, usersController.rechargeView);
 router.post("/recharge", verifyToken, usersController.recharge);
 // Balance
 router.get("/balance", verifyToken, usersController.balanceView);
+// History  
+router.get("/history", verifyToken, usersController.historyView);
+
 
 
 

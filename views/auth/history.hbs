@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="banner-list-covider">
+    <img
+      src="https://nhuxuan.thanhhoa.gov.vn/portal/Photos/2021-08-26/c74cffad295d4dddz4.jpg"
+      alt="khaulenh"
+    />
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Lịch sử thanh toán</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <th width="70%">
+              <strong>ID Hóa Đơn Thanh Toán</strong>
+            </th>
+            <th>
+              <strong>Số Tiền Thanh Toán</strong>
+            </th>
+          </thead>
+          <tbody>
+            {{#each history}}
+              <tr>
+                <td>
+                  <strong>{{this.id_history}}</strong>
+                </td>
+                <td>
+                  <strong>{{this.amount}} vnđ</strong>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

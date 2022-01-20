@@ -199,6 +199,20 @@ class usersController {
       }
     );
   }
+
+  // [GET] /auth/history
+  historyView(req, res) {
+    const id = req.cookies["id-login"];
+    db.query(
+      'select "id_history", "amount" from public."History" where "id_user" = $1',
+      [id]
+    ).then((data) => {
+      res.render("./auth/history", {
+        authenticated: req.authenticated,
+        history: data.rows,
+      });
+    });
+  }
 }
 
 module.exports = new usersController();
