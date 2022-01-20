@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7"
+  },
+  "name": "payment-system",
+  "description": "```js //                   _ooOoo_ //                  o8888888o //                  88\" . \"88 //                  (| -_- |) //                  O\\  =  /O //               ____/`---'\\____ //             .'  \\\\|     |//  `. //            /  \\\\|||  :  |||//  \\ //           /  _||||| -:- |||||-  \\ //           |   | \\\\\\  -  /// |   | //           | \\_|  ''\\---/''  |   | //           \\  .-\\__  `-`  ___/-. / //         ___`. .'  /--.--\\  `. . __ //      .\"\" '<  `.___\\_<|>_/___.'  >'\"\". //     | | :  `- \\`.;`\\ _ /`;.`/ - ` : | | //     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  / //======`-.____`-.___\\_____/___.-`____.-'====== //                   `=---=' // //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //         God Bless        Never Crash - Never Bugs ```",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinhvanminh/Payment-System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trinhvanminh/Payment-System/issues"
+  },
+  "homepage": "https://github.com/trinhvanminh/Payment-System#readme"
+}
