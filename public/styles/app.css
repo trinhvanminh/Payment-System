@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+  color: unset;
+}
+
+.container {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.container-fluid {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  border: #000;
+  border-radius: 5px;
+}
+
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/header-covid.jpeg");
+  /* min-height: 100%; */
+  height: 460px;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+/* ------------------ */
+.multiselect {
+  /* width: 200px; */
+  display: inline-block;
+  position: relative;
+  width: 77%;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  position: absolute;
+  top: 21px;
+  background: #ccc;
+}
+
+#checkboxes label {
+  display: inline-block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
