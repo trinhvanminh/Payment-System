@@ -37,6 +37,8 @@ class apiController {
           } else {
             const sql = `update public."User" set "sodu" = ${newBalance} where "id" = ${id}`;
             const sqlWalletManager = `update public."User" set "sodu" = "sodu" + ${amount} where "id" = ${idWalletManager}`;
+            const insertHistory = `insert into public."History" ("id_user", "amount") values (${id}, ${amount})`;
+            db.query(insertHistory);
             db.query(sqlWalletManager);
             db.query(sql)
               .then((data) => {
