@@ -19,7 +19,7 @@ class apiController {
   paymentWallet(req, res) {
     //Payment cart and minus sodu
     const { id, amount } = req.body;
-
+    const idWalletManager = 1000;
     const sql = `select * from public."User" where "id" = ${id}`;
     db.query(sql)
       .then((data) => {
@@ -36,6 +36,8 @@ class apiController {
             });
           } else {
             const sql = `update public."User" set "sodu" = ${newBalance} where "id" = ${id}`;
+            const sqlWalletManager = `update public."User" set "sodu" = "sodu" + ${amount} where "id" = ${idWalletManager}`;
+            db.query(sqlWalletManager);
             db.query(sql)
               .then((data) => {
                 res.json({ message: "Thanh toán thành công" });
