@@ -19,7 +19,7 @@ class apiController {
   paymentWallet(req, res) {
     //Payment cart and minus sodu
     const { id, amount } = req.body;
-
+    const idWalletManager = 1000;
     const sql = `select * from public."User" where "id" = ${id}`;
     db.query(sql)
       .then((data) => {
@@ -36,6 +36,10 @@ class apiController {
             });
           } else {
             const sql = `update public."User" set "sodu" = ${newBalance} where "id" = ${id}`;
+            const sqlWalletManager = `update public."User" set "sodu" = "sodu" + ${amount} where "id" = ${idWalletManager}`;
+            const insertHistory = `insert into public."History" ("id_user", "amount") values (${id}, ${amount})`;
+            db.query(insertHistory);
+            db.query(sqlWalletManager);
             db.query(sql)
               .then((data) => {
                 res.json({ message: "Thanh toán thành công" });
@@ -44,6 +48,18 @@ class apiController {
               .catch((err) => console.log(err));
           }
         }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // [GET] /api/history - history
+  historyPayment(req, res) {
+    // get data with ID
+    const { id } = req.body;
+    const sql = `select * from public."History" where "id_user" = ${id}`;
+    db.query(sql)
+      .then((data) => {
+        res.json({ data, message: "Lấy Lịch Sử Thanh Toán Thành Công" });
       })
       .catch((err) => console.log(err));
   }
